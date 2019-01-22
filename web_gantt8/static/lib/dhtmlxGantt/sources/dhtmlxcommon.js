@@ -7,14 +7,14 @@ dhtmlxAjax={
 		var t=new dtmlXMLLoaderObject(true);
 		t.async=(arguments.length<3);
 		t.waitCall=callback;
-		t.loadXML(url)
+        t.loadXML(url);
 		return t;
 	},
 	post:function(url,post,callback){
 		var t=new dtmlXMLLoaderObject(true);
 		t.async=(arguments.length<4);
 		t.waitCall=callback;
-		t.loadXML(url,true,post)
+        t.loadXML(url, true, post);
 		return t;
 	},
 	getSync:function(url){
@@ -23,7 +23,7 @@ dhtmlxAjax={
 	postSync:function(url,post){
 		return this.post(url,post,null,true);		
 	}
-}
+};
 
 /**
   *     @desc: xmlLoader object
@@ -47,7 +47,7 @@ function dtmlXMLLoaderObject(funcObject, dhtmlObject, async, rSeed){
 	this.waitCall=null;
 	this.rSeed=rSeed||false;
 	return this;
-};
+}
 /**
   *     @desc: xml loading handler
   *     @type: private
@@ -141,7 +141,7 @@ dtmlXMLLoaderObject.prototype.loadXMLString=function(xmlString){
 		this.waitCall();
 		this.waitCall=null;
 	}
-}
+};
 /**
   *     @desc: load XML
   *     @type: private
@@ -212,7 +212,7 @@ dtmlXMLLoaderObject.prototype.destructor=function(){
 	this.getXMLTopNode = null;
 	this.setXSLParamValue = null;
 	return null;
-}
+};
 
 dtmlXMLLoaderObject.prototype.xmlNodeToJSON = function(node){
         var t={};
@@ -227,7 +227,7 @@ dtmlXMLLoaderObject.prototype.xmlNodeToJSON = function(node){
             }            
         }        
         return t;
-    }
+};
 
 /**  
   *     @desc: Call wrapper
@@ -245,9 +245,9 @@ function callerFunction(funcObject, dhtmlObject){
 		return true;
 	};
 	return this.handler;
-};
+}
 
-/**  
+/**
   *     @desc: Calculate absolute position of html object
   *     @type: private
   *     @param: htmlObject - html object
@@ -327,7 +327,7 @@ function convertStringToBoolean(inputString){
 */
 function getUrlSymbol(str){
 	if (str.indexOf("?") != -1)
-		return "&"
+        return "&";
 	else
 		return "?"
 }
@@ -346,21 +346,20 @@ function dhtmlDragAndDropObject(){
 	window.dhtmlDragAndDrop=this;
 
 	return this;
-};
-
+}
 dhtmlDragAndDropObject.prototype.removeDraggableItem=function(htmlNode){
 	htmlNode.onmousedown=null;
 	htmlNode.dragStarter=null;
 	htmlNode.dragLanding=null;
-}
+};
 dhtmlDragAndDropObject.prototype.addDraggableItem=function(htmlNode, dhtmlObject){
 	htmlNode.onmousedown=this.preCreateDragCopy;
 	htmlNode.dragStarter=dhtmlObject;
 	this.addDragLanding(htmlNode, dhtmlObject);
-}
+};
 dhtmlDragAndDropObject.prototype.addDragLanding=function(htmlNode, dhtmlObject){
 	htmlNode.dragLanding=dhtmlObject;
-}
+};
 dhtmlDragAndDropObject.prototype.preCreateDragCopy=function(e){
 	if ((e||window.event) && (e||event).button == 2)
 		return;
@@ -403,7 +402,9 @@ dhtmlDragAndDropObject.prototype.callDrag=function(e){
 		if (!dragger.dragNode)
 			return dragger.stopDrag();
 
-		dragger.dragNode.onselectstart=function(){return false;}
+        dragger.dragNode.onselectstart = function () {
+            return false;
+        };
 		dragger.gldragNode=dragger.dragNode;
 		document.body.appendChild(dragger.dragNode);
 		document.body.onmouseup=dragger.stopDrag;
@@ -455,7 +456,7 @@ dhtmlDragAndDropObject.prototype.callDrag=function(e){
 	else
 		z=e.srcElement;
 	dragger.checkLanding(z, e);
-}
+};
 
 dhtmlDragAndDropObject.prototype.calculateFramePosition=function(n){
 	//this.fx = 0, this.fy = 0;
@@ -483,7 +484,7 @@ dhtmlDragAndDropObject.prototype.calculateFramePosition=function(n){
 		this.fy=fy;
 	}
 	return "0_0";
-}
+};
 dhtmlDragAndDropObject.prototype.checkLanding=function(htmlObject, e){
 	if ((htmlObject)&&(htmlObject.dragLanding)){
 		if (this.lastLanding)
@@ -504,7 +505,7 @@ dhtmlDragAndDropObject.prototype.checkLanding=function(htmlObject, e){
 				this._onNotFound();
 		}
 	}
-}
+};
 dhtmlDragAndDropObject.prototype.stopDrag=function(e, mode){
 	dragger=window.dhtmlDragAndDrop;
 
@@ -533,7 +534,7 @@ dhtmlDragAndDropObject.prototype.stopDrag=function(e, mode){
 	dragger.tempDOMU=null;
 	dragger.tempDOMM=null;
 	dragger.waitDrag=0;
-}
+};
 
 dhtmlDragAndDropObject.prototype.stopFrameRoute=function(win){
 	if (win)
@@ -550,7 +551,7 @@ dhtmlDragAndDropObject.prototype.stopFrameRoute=function(win){
 	if ((parent.dhtmlDragAndDrop)&&(parent != window)&&(parent != win))
 		parent.dhtmlDragAndDrop.stopFrameRoute(window);
 	} catch(e){}
-}
+};
 dhtmlDragAndDropObject.prototype.initFrameRoute=function(win, mode){
 	if (win){
 		window.dhtmlDragAndDrop.preCreateDragCopy();
@@ -575,7 +576,7 @@ dhtmlDragAndDropObject.prototype.initFrameRoute=function(win, mode){
 			window.frames[i].dhtmlDragAndDrop.initFrameRoute(window, ((!win||mode) ? 1 : 0));
 		} catch(e){}
 	}
-}
+};
 
 var _isFF = false;
 var _isIE = false;
@@ -622,7 +623,7 @@ dtmlXMLLoaderObject.prototype.doXPath=function(xpathExp, docObj, namespace, resu
 	if (_isIE){ //IE
 		if (!docObj)
 			if (!this.xmlDoc.nodeName)
-				docObj=this.xmlDoc.responseXML
+                docObj = this.xmlDoc.responseXML;
 			else
 				docObj=this.xmlDoc;
 
@@ -669,8 +670,8 @@ dtmlXMLLoaderObject.prototype.doXPath=function(xpathExp, docObj, namespace, resu
 		var retType = XPathResult.ANY_TYPE;
 
 		if (result_type == 'single')
-			retType=XPathResult.FIRST_ORDERED_NODE_TYPE
-		var rowsCol = new Array();
+            retType = XPathResult.FIRST_ORDERED_NODE_TYPE;
+        var rowsCol = [];
 		var col = docObj.evaluate(xpathExp, nodeObj, function(pref){
 			return namespace
 		}, retType, null);
@@ -686,18 +687,18 @@ dtmlXMLLoaderObject.prototype.doXPath=function(xpathExp, docObj, namespace, resu
 		}
 		return rowsCol;
 	}
-}
+};
 
 function _dhtmlxError(type, name, params){
 	if (!this.catches)
-		this.catches=new Array();
+        this.catches = [];
 
 	return this;
 }
 
 _dhtmlxError.prototype.catchError=function(type, func_name){
 	this.catches[type]=func_name;
-}
+};
 _dhtmlxError.prototype.throwError=function(type, name, params){
 	if (this.catches[type])
 		return this.catches[type](type, name, params);
@@ -707,7 +708,7 @@ _dhtmlxError.prototype.throwError=function(type, name, params){
 
 	alert("Error type: "+arguments[0]+"\nDescription: "+arguments[1]);
 	return null;
-}
+};
 
 window.dhtmlxError=new _dhtmlxError();
 
@@ -735,10 +736,10 @@ dtmlXMLLoaderObject.prototype.doXPathOpera=function(xpathExp, docObj){
 	if (z[i-1].indexOf("[") != -1)
 		obj=this._filterXPath(obj, z[i-1]);
 	return obj;
-}
+};
 
 dtmlXMLLoaderObject.prototype._filterXPath=function(a, b){
-	var c = new Array();
+    var c = [];
 	var b = b.replace(/[^\[]*\[\@/g, "").replace(/[\[\]\@]*/g, "");
 
 	for (var i = 0; i < a.length; i++)
@@ -746,9 +747,9 @@ dtmlXMLLoaderObject.prototype._filterXPath=function(a, b){
 			c[c.length]=a[i];
 
 	return c;
-}
+};
 dtmlXMLLoaderObject.prototype._getAllNamedChilds=function(a, b){
-	var c = new Array();
+    var c = [];
 
 	if (_isKHTML)
 		b=b.toUpperCase();
@@ -764,7 +765,7 @@ dtmlXMLLoaderObject.prototype._getAllNamedChilds=function(a, b){
 	}
 
 	return c;
-}
+};
 
 function dhtmlXHeir(a, b){
 	for (var c in b)
@@ -786,7 +787,7 @@ function dhtmlxEvent(el, event, handler){
 dtmlXMLLoaderObject.prototype.xslDoc=null;
 dtmlXMLLoaderObject.prototype.setXSLParamValue=function(paramName, paramValue, xslDoc){
 	if (!xslDoc)
-		xslDoc=this.xslDoc
+        xslDoc = this.xslDoc;
 
 	if (xslDoc.responseXML)
 		xslDoc=xslDoc.responseXML;
@@ -796,19 +797,19 @@ dtmlXMLLoaderObject.prototype.setXSLParamValue=function(paramName, paramValue, x
 
 	if (item != null)
 		item.firstChild.nodeValue=paramValue
-}
+};
 dtmlXMLLoaderObject.prototype.doXSLTransToObject=function(xslDoc, xmlDoc){
 	if (!xslDoc)
 		xslDoc=this.xslDoc;
 
 	if (xslDoc.responseXML)
-		xslDoc=xslDoc.responseXML
+        xslDoc = xslDoc.responseXML;
 
 	if (!xmlDoc)
 		xmlDoc=this.xmlDoc;
 
 	if (xmlDoc.responseXML)
-		xmlDoc=xmlDoc.responseXML
+        xmlDoc = xmlDoc.responseXML;
 
 	//MOzilla
 	if (!_isIE){
@@ -826,26 +827,26 @@ dtmlXMLLoaderObject.prototype.doXSLTransToObject=function(xslDoc, xmlDoc){
 		}
 	}
 	return result;
-}
+};
 
 dtmlXMLLoaderObject.prototype.doXSLTransToString=function(xslDoc, xmlDoc){
 	var res = this.doXSLTransToObject(xslDoc, xmlDoc);
 	if(typeof(res)=="string")
 		return res;
 	return this.doSerialization(res);
-}
+};
 
 dtmlXMLLoaderObject.prototype.doSerialization=function(xmlDoc){
 	if (!xmlDoc)
 			xmlDoc=this.xmlDoc;
 	if (xmlDoc.responseXML)
-			xmlDoc=xmlDoc.responseXML
+        xmlDoc = xmlDoc.responseXML;
 	if (!_isIE){
 		var xmlSerializer = new XMLSerializer();
 		return xmlSerializer.serializeToString(xmlDoc);
 	} else
 		return xmlDoc.xml;
-}
+};
 
 /**
 *   @desc: 
@@ -858,16 +859,16 @@ dhtmlxEventable=function(obj){
 				this[name]=new this.eventCatcher(callObj||this);
 				
 			return(name+':'+this[name].addEvent(catcher)); //return ID (event name & event ID)
-		}
+        };
 		obj.callEvent=function(name, arg0){ 
 			name='ev_'+name.toLowerCase();
 			if (this[name])
 				return this[name].apply(this, arg0);
 			return true;
-		}
+        };
 		obj.checkEvent=function(name){
 			return (!!this['ev_'+name.toLowerCase()])
-		}
+        };
 		obj.eventCatcher=function(obj){
 			var dhx_catch = [];
 			var z = function(){
@@ -879,29 +880,29 @@ dhtmlxEventable=function(obj){
 					}
 				}
 				return res;
-			}
+            };
 			z.addEvent=function(ev){
 				if (typeof (ev) != "function")
 					ev=eval(ev);
 				if (ev)
 					return dhx_catch.push(ev)-1;
 				return false;
-			}
+            };
 			z.removeEvent=function(id){
 				dhx_catch[id]=null;
-			}
+            };
 			return z;
-		}
+        };
 		obj.detachEvent=function(id){
 			if (id != false){
 				var list = id.split(':');           //get EventName and ID
 				this[list[0]].removeEvent(list[1]); //remove event
 			}
-		}
+        };
 		obj.detachAllEvents = function(){
 			for (var name in this){
 				if (name.indexOf("ev_")==0) 
 					delete this[name];
 			}
 		}
-}
+};

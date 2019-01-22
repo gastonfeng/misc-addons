@@ -99,7 +99,7 @@ openerp.web_calendar_quick_navigation = function (session) {
                         _view.calendar.changeView('agendaDay');
                         _view.calendar.gotoDate(start_date);
                         is_day = true;
-                        return;
+
                     }
                 });
             }

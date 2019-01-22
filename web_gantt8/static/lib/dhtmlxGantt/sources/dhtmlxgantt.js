@@ -1650,7 +1650,8 @@ GanttChart.prototype._showContextMenu = function(event, obj)
 
         var x, y;
         if (_isIE){
-            var dEl0 = window.document.documentElement, dEl1 = window.document.body, corrector = new Array((dEl0.scrollLeft||dEl1.scrollLeft),(dEl0.scrollTop||dEl1.scrollTop));
+            var dEl0 = window.document.documentElement, dEl1 = window.document.body,
+                corrector = [(dEl0.scrollLeft || dEl1.scrollLeft), (dEl0.scrollTop || dEl1.scrollTop)];
             x = event.clientX + corrector[0];
             y = event.clientY + corrector[1];
         } else {
@@ -2571,7 +2572,7 @@ GanttChart.prototype.addDayInPanelTime = function(row)
     newCell.className = "dayNumber";
 
     date.setDate(date.getDate() + parseInt(idx));
-    var day = date.getDate()
+    var day = date.getDate();
     newCell.innerHTML = day;
     newCell.setAttribute("idx", idx);
 
