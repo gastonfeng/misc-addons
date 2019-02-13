@@ -12,13 +12,13 @@ class SaleOrderLineReminder(models.Model):
 class AccountAnalyticAccountBooking(models.Model):
     _inherit = 'account.analytic.account'
 
-    def open_booking_order_lines(self, cr, uid, ids, context=None):
+    def open_booking_order_lines(self,  ids, context=None):
         if context is None:
             context = {}
-        sale_ids = self.pool.get('sale.order').search(cr, uid, [('project_id', '=', context.get('search_default_project_id', False))])
-        names = [record.name for record in self.browse(cr, uid, ids, context=context)]
+        sale_ids = self.pool.get('sale.order').search( [('project_id', '=', context.get('search_default_project_id', False))])
+        names = [record.name for record in self.browse( ids, context=context)]
         name = 'Booking Lines %s' % (','.join(names))
-        view_id = self.pool['ir.model.data'].xmlid_to_res_id(cr, uid, 'booking_calendar.view_booking_order_line_tree')
+        view_id = self.pool['ir.model.data'].xmlid_to_res_id( 'booking_calendar.view_booking_order_line_tree')
         return {
             'type': 'ir.actions.act_window',
             'name': name,

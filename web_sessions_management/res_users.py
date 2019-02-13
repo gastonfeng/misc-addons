@@ -49,7 +49,7 @@ class ResUsers(models.Model):
 
 
     # get earlier expiring date
-    def get_expiring_date(self, cr, uid, id, context):
+    def get_expiring_date(self,  id, context):
         now = datetime.now()
         user_obj = request.registry.get('res.users')
         user_id = user_obj.browse(cr, SUPERUSER_ID, id, context=context)

@@ -11,7 +11,7 @@ class IrUiMenu(models.Model):
     iframe_pages_group = fields.Boolean('Parent menu for iframe pages', default=False)
 
     _defaults = {
-        'parent_id': lambda self, cr, uid, ctx: ctx and ctx.get('default_iframe_pages_group') and self.pool.get('ir.model.data').get_object_reference(cr, uid, 'web_iframe_pages', 'menu_top')[1]
+        'parent_id': lambda self,  ctx: ctx and ctx.get('default_iframe_pages_group') and self.pool.get('ir.model.data').get_object_reference( 'web_iframe_pages', 'menu_top')[1]
     }
 
 

@@ -33,14 +33,14 @@ class ProjectProject(models.Model):
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
 
-    def name_get(self, cr, uid, ids, context=None):
+    def name_get(self,  ids, context=None):
         res = []
         if not ids:
             return res
         if isinstance(ids, (int, long)):
             ids = [ids]
         for id in ids:
-            elmt = self.browse(cr, uid, id, context=context)
+            elmt = self.browse( id, context=context)
             res.append((id, elmt.name))
         return res
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

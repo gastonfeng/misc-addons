@@ -237,10 +237,10 @@ class GenerateBookingWizard(models.TransientModel):
                                     (6, 'Sunday')],
                                    compute='_compute_day_of_week', readonly=True)
 
-    def default_get(self, cr, uid, fields, context=None):
-        result = super(GenerateBookingWizard, self).default_get(cr, uid, fields, context=context)
+    def default_get(self,  fields, context=None):
+        result = super(GenerateBookingWizard, self).default_get( fields, context=context)
         active_id = context and context.get('active_id', False)
-        active_order = self.pool['sale.order'].browse(cr, uid, active_id, context=context)
+        active_order = self.pool['sale.order'].browse( active_id, context=context)
         if len(active_order.order_line) > 0:
             result.update({
                 'order_id': active_order.id,

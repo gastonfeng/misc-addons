@@ -59,7 +59,7 @@ class HomeTkobr(openerp.addons.web.controllers.main.Home):
             uid = request.session.authenticate(request.session.db,
                                                request.params['login'], request.params['password'])
             if uid is not False:
-                self.save_session(request.cr, uid, request.context)
+                self.save_session(request. request.context)
                 return http.redirect_with_hash(redirect)
             request.uid = old_uid
             values['error'] = 'Login failed due to one of the following reasons:'
@@ -68,7 +68,7 @@ class HomeTkobr(openerp.addons.web.controllers.main.Home):
             values['reason3'] = '- User not allowed to login at this specific time or day'
         return request.render('web.login', values)
 
-    def save_session(self, cr, uid, context=None):
+    def save_session(self,  context=None):
         if not request.uid:
             request.uid = openerp.SUPERUSER_ID
         sid = request.httprequest.session.sid

@@ -32,11 +32,11 @@ class GamificationGoal(models.Model):
     _inherit = 'gamification.goal'
 
     @api.v7
-    def _get_sum(self, cr, uid, ids, fname, arg, context=None):
+    def _get_sum(self,  ids, fname, arg, context=None):
         # copy-paste from addons/gamification/models/goal.py::update
 
         result = {}
-        for goal in self.browse(cr, uid, ids, context=context):
+        for goal in self.browse( ids, context=context):
             definition = goal.definition_id
             if True:  # keep original indent
                 obj = self.pool.get(definition.model_id.model)
@@ -57,11 +57,11 @@ class GamificationGoal(models.Model):
                         if fname == 'sum':
                             field_name = definition.field_id.name
                             # TODO for master: group on user field in batch mode
-                            res = obj.read_group(cr, uid, domain, [field_name], [], context=context)
+                            res = obj.read_group( domain, [field_name], [], context=context)
                             new_value = res and res[0][field_name] or 0.0
 
                         else:  # fname == 'count'
-                            new_value = obj.search(cr, uid, domain, context=context, count=True)
+                            new_value = obj.search( domain, context=context, count=True)
                         result[goal.id] = new_value
         return result
 
@@ -71,14 +71,14 @@ class GamificationGoal(models.Model):
 
 
     @api.v7
-    def update(self, cr, uid, ids, context=None):
+    def update(self,  ids, context=None):
         if context is None:
             context = {}
         # commit = context.get('commit_gamification', False)
 
         goals_by_definition = {}
         all_goals = {}
-        for goal in self.browse(cr, uid, ids, context=context):
+        for goal in self.browse( ids, context=context):
             if goal.state in ('draft', 'canceled'):
                 # draft or canceled goals should not be recomputed
                 continue
@@ -113,9 +113,9 @@ class GamificationGoal(models.Model):
                         if definition.computation_mode == 'avg':
                             field_name = definition.field_id.name
                             # TODO for master: group on user field in batch mode
-                            res = obj.read_group(cr, uid, domain, [field_name], [], context=context)
+                            res = obj.read_group( domain, [field_name], [], context=context)
                             new_value = res and res[0][field_name] or 0.0
-                            count = obj.search_count(cr, uid, domain, context=context)
+                            count = obj.search_count( domain, context=context)
                             if count != 0:
                                 new_value = float(new_value) / count
 
@@ -127,12 +127,12 @@ class GamificationGoal(models.Model):
                                     field_name,
                                     'ASC' if definition.computation_mode == 'min' else 'DESC'
                                 )
-                                ids = obj.search(cr, uid, domain, context=context, order=orderby, limit=1)
-                                res = obj.read(cr, uid, ids, [field_name], context=context)
+                                ids = obj.search( domain, context=context, order=orderby, limit=1)
+                                res = obj.read( ids, [field_name], context=context)
                                 new_value = res and res[0][field_name] or 0.0
                             except ValueError:
-                                ids = obj.search(cr, uid, domain, context=context)
-                                res = obj.read(cr, uid, ids, [field_name], context=context)
+                                ids = obj.search( domain, context=context)
+                                res = obj.read( ids, [field_name], context=context)
                                 res = sorted(res, key=lambda r: r[field_name], reverse=definition.computation_mode == 'max')
                                 new_value = res and res[0][field_name] or 0.0
 
@@ -155,11 +155,11 @@ class GamificationGoal(models.Model):
                     value['state'] = 'failed'
                     value['closed'] = True
                 if value:
-                    self.write(cr, uid, [goal.id], value, context=context)
+                    self.write( [goal.id], value, context=context)
             # if commit:
             #    cr.commit()
 
-        return super(GamificationGoal, self).update(cr, uid, other_ids, context=context)
+        return super(GamificationGoal, self).update( other_ids, context=context)
 
 
 class GamificationChallenge(models.Model):
@@ -169,7 +169,7 @@ class GamificationChallenge(models.Model):
     precision = fields.Float('Precision', help='round(Value/precision) * precision.  E.g. 12345,333333 will be rounded to 12345,33 for precision=0.01, and to 12000 for precision=1000', default=0.01)
 
     @api.v7
-    def _get_serialized_challenge_lines(self, cr, uid, challenge, user_id=False, restrict_goal_ids=False, restrict_top=False, context=None):
+    def _get_serialized_challenge_lines(self,  challenge, user_id=False, restrict_goal_ids=False, restrict_top=False, context=None):
         """Return a serialised version of the goals information if the user has not completed every goal
 
         :challenge: browse record of challenge to compute
@@ -264,9 +264,9 @@ class GamificationChallenge(models.Model):
                 sorting = "completeness desc, current desc"
                 limit = False
 
-            goal_ids = goal_obj.search(cr, uid, domain, order=sorting, limit=limit, context=context)
+            goal_ids = goal_obj.search( domain, order=sorting, limit=limit, context=context)
             ranking = 0
-            for goal in goal_obj.browse(cr, uid, goal_ids, context=context):
+            for goal in goal_obj.browse( goal_ids, context=context):
                 definition_id = goal.definition_id  # new stuff
                 evaled_domain = safe_eval(definition_id.domain, {'user': goal.user_id})
                 evaled_domain = str(evaled_domain)

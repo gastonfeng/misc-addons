@@ -49,7 +49,7 @@ class ProjectTaskAutoStaging(models.Model):
     _track = {
         'stage_id': {
             'project_task_auto_staging.mt_auto_move_task':
-            lambda self, cr, uid, obj, ctx=None:
+            lambda self,  obj, ctx=None:
             ctx and ctx.get('auto_staging')
         }
     }

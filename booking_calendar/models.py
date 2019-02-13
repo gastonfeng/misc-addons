@@ -642,19 +642,19 @@ class ProductTemplate(models.Model):
 class SaleOrderAmountTotal(models.Model):
     _inherit = 'sale.order'
 
-    def _amount_all_wrapper(self, cr, uid, ids, field_name, arg, context=None):
-        return super(SaleOrderAmountTotal, self)._amount_all_wrapper(cr, uid, ids, field_name, arg, context=None)
+    def _amount_all_wrapper(self,  ids, field_name, arg, context=None):
+        return super(SaleOrderAmountTotal, self)._amount_all_wrapper( ids, field_name, arg, context=None)
 
-    def _get_order(self, cr, uid, ids, context=None):
+    def _get_order(self,  ids, context=None):
         result = {}
-        for line in self.pool.get('sale.order.line').browse(cr, uid, ids, context=context):
+        for line in self.pool.get('sale.order.line').browse( ids, context=context):
             result[line.order_id.id] = True
         return result.keys()
 
 
     amount_total = fields.Function(_amount_all_wrapper, digits=dp.get_precision('Account'), string='Total'
                                                 store={
-                                                    'sale.order': (lambda self, cr, uid, ids, c={}: ids, ['order_line'], 10),
+                                                    'sale.order': (lambda self,  ids, c={}: ids, ['order_line'], 10),
                                                     'sale.order.line': (_get_order, ['price_unit', 'tax_id', 'discount', 'product_uom_qty', 'state'], 10)},
                                                 multi='sums', help="The total amount."),
     }

@@ -7,10 +7,10 @@ class CrmLead(models.Model):
 
     _track = {
         'date_action': {
-            'crm_next_action.mt_lead_next_action_date': lambda self, cr, uid, obj, ctx=None: True
+            'crm_next_action.mt_lead_next_action_date': lambda self,  obj, ctx=None: True
         },
         'title_action': {
-            'crm_next_action.mt_lead_next_action': lambda self, cr, uid, obj, ctx=None: True
+            'crm_next_action.mt_lead_next_action': lambda self,  obj, ctx=None: True
         }
     }
 
