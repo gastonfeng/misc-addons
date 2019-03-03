@@ -39,7 +39,7 @@
             id="menu_project_tags"
             sequence="15"
             action="action_project_tags_project_tag_project_tags"
-            parent="base.menu_definitions"
+            parent="project.menu_main_pm"
             />
 
     </data>

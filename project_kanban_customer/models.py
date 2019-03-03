@@ -8,12 +8,12 @@ class ProjectProject(models.Model):
     partner_country_image = fields.Binary('Partner\'s country flag', related='partner_id.country_id.image')
     partner_country_name = fields.Char('Partner\'s country name', related='partner_id.country_id.name')
 
-    def name_get(self, cr, uid, ids, context=None):
+    def name_get(self, ids):
         if isinstance(ids, (list, tuple)) and not len(ids):
             return []
-        if isinstance(ids, int):
+        if isinstance(ids, (long, int)):
             ids = [ids]
-        reads = self.read(cr, uid, ids, ['partner_id', 'name'], context=context)
+        reads = self.read(ids, ['partner_id', 'name'])
         res = []
         for record in reads:
             name = record['name'] or ''
@@ -23,13 +23,11 @@ class ProjectProject(models.Model):
             res.append((record['id'], name))
         return res
 
-    def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=100):
+    def name_search(self, name, args=None, operator='ilike', limit=100):
         if not args:
             args = []
-        if not context:
-            context = {}
         if name:
-            ids = self.search(cr, uid, ['|', ('partner_id', operator, name), ('name', operator, name)] + args, limit=limit, context=context)
+            ids = self.search(['|', ('partner_id', operator, name), ('name', operator, name)] + args, limit=limit)
         else:
-            ids = self.search(cr, uid, args, limit=limit, context=context)
-        return self.name_get(cr, uid, ids, context)
+            ids = self.search(args, limit=limit)
+        return self.name_get(ids)

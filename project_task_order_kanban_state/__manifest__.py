@@ -11,5 +11,5 @@
     'currency': 'EUR',
     'images': ['images/task_order.png'],
     'depends': ['project'],
-    'installable': False
+    'installable': True
 }

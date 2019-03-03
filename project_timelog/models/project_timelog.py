@@ -94,7 +94,7 @@ class Task(models.Model):
     datetime_stopline = fields.Datetime(string="Stopline", select=True, track_visibility='onchange', copy=False)
     _track = {
         'datetime_stopline': {
-            'project_timelog.mt_timelog_stopline': lambda self, cr, uid, obj, ctx=None: bool(obj.datetime_stopline),
+            'project_timelog.mt_timelog_stopline': lambda self,  obj, ctx=None: bool(obj.datetime_stopline),
         },
     }
 
