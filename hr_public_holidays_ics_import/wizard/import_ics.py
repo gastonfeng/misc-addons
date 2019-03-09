@@ -1,10 +1,12 @@
+import base64
+import logging
 import re
 from datetime import timedelta
-import base64
+
 from openerp import models, fields, api
 from openerp.exceptions import Warning
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT as DF
-import logging
+
 _logger = logging.getLogger(__name__)
 try:
     from icalendar import Calendar

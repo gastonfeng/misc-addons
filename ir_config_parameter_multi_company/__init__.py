@@ -1,5 +1,3 @@
-from . import models
-
 def uninstall_hook(cr, registry):
     from odoo import api, SUPERUSER_ID
 

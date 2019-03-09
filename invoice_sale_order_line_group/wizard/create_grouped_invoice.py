@@ -1,7 +1,8 @@
+from functools import reduce
+
+from openerp import models, fields, api
 from openerp.osv import osv
 from openerp.tools.translate import _
-from openerp import models, fields, api
-from functools import reduce
 
 
 class GroupedInvoiceWizard(osv.osv_memory):

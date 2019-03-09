@@ -9,7 +9,6 @@
 import re
 
 from odoo import models, api
-
 from .ir_translation import debrand_bytes
 
 

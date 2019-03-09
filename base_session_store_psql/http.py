@@ -2,7 +2,6 @@ import logging
 
 import odoo
 from odoo.tools.func import lazy_property
-
 from .sessionstore import PostgresSessionStore
 
 _logger = logging.getLogger(__name__)

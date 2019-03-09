@@ -1,6 +1,7 @@
+import operator
+
 from odoo import fields, models, api
 from odoo.tools.safe_eval import safe_eval
-import operator
 
 
 class HrPayslip(models.Model):

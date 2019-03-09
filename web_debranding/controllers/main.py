@@ -6,17 +6,18 @@
 # Copyright 2018 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-import odoo
-from odoo import http
+import base64
+import functools
+import io
+
+from odoo.addons.web.controllers import main as controllers_main
 from odoo.addons.web.controllers.main import Binary
 from odoo.addons.web.controllers.main import WebClient
-from odoo.addons.web.controllers import main as controllers_main
-import functools
+
+import odoo
+from odoo import http
 from odoo.http import request
 from odoo.modules import get_module_resource
-import io
-import base64
-
 from ..models.ir_translation import debrand, debrand_bytes
 
 db_monodb = http.db_monodb

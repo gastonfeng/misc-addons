@@ -1,17 +1,16 @@
 import copy
-from datetime import datetime, timedelta, time
-import pytz
 import logging
+from datetime import datetime, timedelta, time
 
-from openerp import api, models, fields
+import openerp.addons.decimal_precision as dp
+import pytz
+from openerp import api, fields
+from openerp import models
+from openerp.addons.resource.resource import seconds
+from openerp.exceptions import ValidationError
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT as DTF
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 from openerp.tools.translate import _
-from openerp.exceptions import ValidationError
-
-from openerp.addons.resource.resource import seconds
-import openerp.addons.decimal_precision as dp
-from openerp import fields as old_api_fields, models
 
 _logger = logging.getLogger(__name__)
 

@@ -1,8 +1,8 @@
 # Copyright 2018 Ivan Yelizariev <https://it-projects.info/team/yelizariev>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
-from odoo import models, api
 import logging
 
+from odoo import models, api
 
 _logger = logging.getLogger(__name__)
 

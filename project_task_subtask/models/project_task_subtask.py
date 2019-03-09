@@ -7,10 +7,9 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 from odoo import models, fields, api
-from odoo.tools import html_escape as escape
 from odoo.exceptions import Warning as UserError
+from odoo.tools import html_escape as escape
 from odoo.tools.translate import _
-
 
 SUBTASK_STATES = {'done': 'Done',
                   'todo': 'TODO',

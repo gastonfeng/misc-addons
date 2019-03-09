@@ -4,8 +4,8 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 import logging
-from odoo import models, api
 
+from odoo import models, api
 from .ir_translation import debrand
 
 _logger = logging.getLogger(__name__)

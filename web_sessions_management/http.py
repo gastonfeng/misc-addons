@@ -23,6 +23,7 @@
 #
 
 import logging
+
 import openerp
 import werkzeug.contrib.sessions
 import werkzeug.datastructures
@@ -33,6 +34,7 @@ import werkzeug.wrappers
 import werkzeug.wsgi
 from openerp.http import request
 from openerp.tools.func import lazy_property
+
 #
 _logger = logging.getLogger(__name__)
 

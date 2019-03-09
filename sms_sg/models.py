@@ -1,6 +1,6 @@
 
-from openerp import models, fields, api
 import requests
+from openerp import models, fields, api
 
 
 class SendAndLog(models.Model):

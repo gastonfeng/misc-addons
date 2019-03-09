@@ -1,4 +1,5 @@
 import datetime
+
 from openerp import http
 from openerp.http import request
 

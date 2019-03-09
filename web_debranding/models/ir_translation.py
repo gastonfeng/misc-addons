@@ -11,7 +11,6 @@ import re
 from odoo import api
 from odoo import models
 from odoo import tools
-
 from .ir_config_parameter import get_debranding_parameters_env
 
 

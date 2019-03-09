@@ -51,7 +51,8 @@
       <field name="context">{'search_default_group_order_id': 1}</field>
     </record>
 
-    <menuitem action="sales_orders_lines_list_action" id="menu_sale_order_line" parent="base.menu_sales" sequence="6" groups="base.group_sale_salesman,base.group_sale_manager"/>
+      <menuitem action="sales_orders_lines_list_action" id="menu_sale_order_line" parent="sale.sale_menu_root"
+                sequence="6" groups="base.group_sale_salesman,base.group_sale_manager"/>
 
   </data>
 </openerp>

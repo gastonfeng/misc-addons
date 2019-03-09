@@ -1,9 +1,10 @@
 import datetime
+
 from openerp import models, fields, api
-from openerp.exceptions import Warning as UserError
-from openerp.tools.translate import _
 from openerp.addons.bus.models.bus_presence import AWAY_TIMER
 from openerp.addons.bus.models.bus_presence import DISCONNECTION_TIMER
+from openerp.exceptions import Warning as UserError
+from openerp.tools.translate import _
 
 
 class ProjectTimelog(models.Model):
@@ -91,7 +92,7 @@ class ProjectTimelog(models.Model):
 class Task(models.Model):
     _inherit = "project.task"
 
-    datetime_stopline = fields.Datetime(string="Stopline", select=True, track_visibility='onchange', copy=False)
+    datetime_stopline = fields.Datetime(string="Stopline", index=True, track_visibility='onchange', copy=False)
     _track = {
         'datetime_stopline': {
             'project_timelog.mt_timelog_stopline': lambda self,  obj, ctx=None: bool(obj.datetime_stopline),

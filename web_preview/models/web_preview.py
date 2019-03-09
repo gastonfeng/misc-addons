@@ -1,5 +1,6 @@
-from odoo import models, fields, api
 import re
+
+from odoo import models, fields, api
 
 
 class Preview(models.AbstractModel):

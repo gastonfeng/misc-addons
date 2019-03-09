@@ -1,11 +1,13 @@
 # Copyright 2018 Ivan Yelizariev <https://it-projects.info/team/yelizariev>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 import logging
+
 import werkzeug
+from odoo.addons.web.controllers.main import Binary
 
 import odoo
 from odoo.http import request, route
-from odoo.addons.web.controllers.main import Binary
+
 # TODO some code can be part of ir_attachment_url
 
 _logger = logging.getLogger(__name__)

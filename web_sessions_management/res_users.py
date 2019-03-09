@@ -22,12 +22,13 @@
 #
 #
 
+from datetime import datetime
+
+from openerp import SUPERUSER_ID
 from openerp import fields
 from openerp import models
-from datetime import datetime
-from openerp import SUPERUSER_ID
-from openerp.http import request
 from openerp.addons.base.ir.ir_cron import _intervalTypes
+from openerp.http import request
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 

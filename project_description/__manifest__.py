@@ -27,7 +27,7 @@
     "depends": ["project",
                 ],
     "init_xml": [],
-    "update_xml": [
+    "data": [
         "project_view.xml",
     ],
     "data": ["security/project_description_security.xml"],

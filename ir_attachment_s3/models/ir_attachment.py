@@ -1,9 +1,9 @@
 # Copyright 2016-2018 Ildar Nasyrov <https://it-projects.info/team/iledarn>
 # Copyright 2016-2018 Ivan Yelizariev <https://it-projects.info/team/yelizariev>
 import base64
-import os
 import hashlib
 import logging
+import os
 
 from odoo import api, models, _, fields
 from odoo.tools.safe_eval import safe_eval

@@ -1,4 +1,5 @@
 import random
+
 import openerp
 from openerp import api
 from openerp import models

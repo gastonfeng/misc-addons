@@ -1,5 +1,3 @@
-
-from . import controllers
 from openerp import api, SUPERUSER_ID
 
 
