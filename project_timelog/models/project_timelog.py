@@ -1,9 +1,10 @@
 import datetime
+
 from openerp import models, fields, api
-from openerp.exceptions import Warning as UserError
-from openerp.tools.translate import _
 from openerp.addons.bus.models.bus_presence import AWAY_TIMER
 from openerp.addons.bus.models.bus_presence import DISCONNECTION_TIMER
+from openerp.exceptions import Warning as UserError
+from openerp.tools.translate import _
 
 
 class ProjectTimelog(models.Model):

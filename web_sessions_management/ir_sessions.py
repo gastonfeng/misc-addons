@@ -23,11 +23,12 @@
 #
 
 import logging
-from openerp import api, models, fields
 from datetime import datetime
 from datetime import timedelta
-from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
+
+from openerp import api, models, fields
 from openerp.http import root
+from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 _logger = logging.getLogger(__name__)
 

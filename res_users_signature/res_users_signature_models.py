@@ -1,5 +1,6 @@
-from openerp import fields as old_fields
 from openerp import api, models, fields, tools
+from openerp import fields as old_fields
+
 try:
     from openerp.addons.email_template.email_template import mako_template_env
 except ImportError:

@@ -1,8 +1,5 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from . import models
-from . import controllers
-
 from openerp import SUPERUSER_ID, api
 
 MODULE = '_web_debranding'
@@ -14,5 +11,4 @@ def uninstall_hook(cr, registry):
 
 
 def post_load():
-
-    from . import fields
+    pass

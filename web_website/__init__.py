@@ -1,5 +1,4 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
-from . import models
 
 
 def post_init_hook(cr, registry):

@@ -1,8 +1,8 @@
 import base64
 import hashlib
 
-from odoo.tools.safe_eval import safe_eval
 from odoo import models, fields, api, exceptions, _
+from odoo.tools.safe_eval import safe_eval
 
 
 class ResConfigSettings(models.TransientModel):

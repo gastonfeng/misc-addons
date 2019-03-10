@@ -1,9 +1,10 @@
 
-from openerp import models, fields, api
 import datetime
 import time
-from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
+
+from openerp import models, fields, api
 from openerp.exceptions import ValidationError
+from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class ProjectProjectAutoStaging(models.Model):

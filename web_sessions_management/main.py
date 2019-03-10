@@ -23,11 +23,12 @@
 #
 
 import logging
+
 import openerp
-from openerp import fields
 from openerp import SUPERUSER_ID
-from openerp.http import request
+from openerp import fields
 from openerp import http
+from openerp.http import request
 
 _logger = logging.getLogger(__name__)
 

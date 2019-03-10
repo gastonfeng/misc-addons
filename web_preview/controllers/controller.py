@@ -1,10 +1,12 @@
-from odoo import http
-from odoo.http import request
+import base64
+
 import werkzeug.utils
 import werkzeug.wrappers
-import base64
 from odoo.addons.web.controllers.main import Binary
 from odoo.addons.web.controllers.main import binary_content
+
+from odoo import http
+from odoo.http import request
 
 
 class Controller(Binary):

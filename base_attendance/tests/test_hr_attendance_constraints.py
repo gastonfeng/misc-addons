@@ -2,8 +2,9 @@
 # Copyright 2018 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo.tests.common import TransactionCase
 import time
+
+from odoo.tests.common import TransactionCase
 
 
 class TestHrAttendance(TransactionCase):
