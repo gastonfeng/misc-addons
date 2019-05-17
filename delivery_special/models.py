@@ -57,8 +57,8 @@ class DeliveryGridLine(models.Model):
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    special_delivery = fields.Integer('Special Delivery', help='Allows make special rules at delivery grid. Can be negative')
+    special_delivery = fields.Integer('Special Delivery', help='Allows make special rules at delivery grid. Can be negative',default=0)
 
-    _defaults = {
-        'special_delivery': 0,
-    }
+    # _defaults = {
+    #     'special_delivery': 0,
+    # }

@@ -34,8 +34,8 @@ class Project(models.Model):
     project_tag_ids = fields.Many2many('project_tags.project_tag', 'project_tags___project_tag_ids_rel', 'project_id', 'project_tag_id', string='Tags')
 
 
-    _defaults = {
-    }
+    # _defaults = {
+    # }
 
     _constraints = [
     ]

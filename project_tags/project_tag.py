@@ -34,13 +34,13 @@ class ProjectTag(models.Model):
     project_id = fields.Many2many('project.project', 'project_tags___project_tag_ids_rel', 'project_tag_id', 'project_id', string='&lt;no label&gt;')
 
 
-    _defaults = {
-    }
+    # _defaults = {
+    # }
+    #
+    # _constraints = [
+    # ]
 
-    _constraints = [
-    ]
 
-
-ProjectTag()
+# ProjectTag()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

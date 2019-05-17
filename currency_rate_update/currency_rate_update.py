@@ -65,11 +65,11 @@ class CurrencyRateUpdateService(models.Model):
     )
         # note fileds that will be used as a logger
     note = fields.Text('update notice')
-    max_delta_days = fields.Integer('Max delta days', required=True, help="If the time delta between the rate date given by the webservice and the current date exeeds this value, then the currency rate is not updated in OpenERP.")
+    max_delta_days = fields.Integer('Max delta days', required=True, help="If the time delta between the rate date given by the webservice and the current date exeeds this value, then the currency rate is not updated in OpenERP.",default=lambda *a: 4)
 
-    _defaults = {
-        'max_delta_days': lambda *a: 4,
-    }
+    # _defaults = {
+    #     'max_delta_days': lambda *a: 4,
+    # }
     _sql_constraints = [
         (
             'curr_service_unique',
