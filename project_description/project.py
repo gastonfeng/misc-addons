@@ -18,7 +18,9 @@
 #
 #
 
-from openerp import fields, models
+from odoo import fields, models
+
+from odoo import api
 
 
 class ProjectProject(models.Model):
@@ -32,14 +34,11 @@ class ProjectProject(models.Model):
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
 
-    def name_get(self,  ids, context=None):
+    @api.multi
+    def name_get(self):
         res = []
-        if not ids:
-            return res
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        for id in ids:
-            elmt = self.browse( id, context=context)
+        for id in self:
+            elmt = id
             res.append((id, elmt.name))
         return res
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
