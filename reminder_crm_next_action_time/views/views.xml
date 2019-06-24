@@ -20,7 +20,7 @@
                         }
                     </style>
                 </xpath>
-                <xpath expr="//div[@class='o_row mr16']" position="attributes">
+                <xpath expr="//div[hasclass('o_row', 'mr16')]" position="attributes">
                     <attribute name="class">o_row next_action_time</attribute>
                 </xpath>
             </field>
